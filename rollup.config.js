@@ -21,7 +21,7 @@ const external = ['axios', 'qs'];
 export default [{
   input: 'src/index.js',
   output: {
-    name: 'ES6 Module',
+    name: 'npmLibPackageExample',
     file: 'lib/index.esm.js',
     format: 'esm',
     sourcemap: true,
@@ -31,7 +31,7 @@ export default [{
 }, {
   input: 'src/index.js',
   output: {
-    name: 'CommonJS',
+    name: 'npmLibPackageExample',
     file: 'lib/index.js',
     format: 'cjs',
     sourcemap: true,
