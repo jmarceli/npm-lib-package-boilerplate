@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended",
+    "plugin:flowtype/recommended",
+  ],
+  "plugins": [
+    "jest",
+    "flowtype",
+  ],
+  "rules": {
+    // special case for rewire __get__
+    "no-underscore-dangle": ["error", { "allow": ["__get__"] }]
+  },
+}

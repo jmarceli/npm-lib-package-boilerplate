@@ -1,0 +1,63 @@
+{
+  "name": "npm-lib-package-example",
+  "version": "0.0.1",
+  "description": "Example of NPM library package build with Babel, Rollup, Jest, Flow, ESLint and Travis CI",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmarceli/npm-lib-package-example.git"
+  },
+  "author": "Jan Grzegorowski <grzegorowski@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "yarn jest src",
+    "test:watch": "BABEL_ENV=test yarn jest src --watch --notify",
+    "cover": "jest src --coverage",
+    "lint": "eslint src",
+    "build": "yarn rollup -c",
+    "precommit": "yarn flow src && yarn lint && yarn test",
+    "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build"
+  },
+  "engines": {
+    "node": ">= 8.x"
+  },
+  "keywords": [
+    "lib-package-example",
+    "package-example",
+    "nodejs-package-example"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-rewire": "^1.2.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.23.0",
+    "flow-bin": "^0.81.0",
+    "flow-typed": "^2.5.1",
+    "husky": "^1.0.1",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "3",
+    "rollup-plugin-cpy": "^1.0.0",
+    "rollup-plugin-flow": "^1.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn precommit"
+    }
+  }
+}
