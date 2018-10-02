@@ -1,6 +1,6 @@
 {
   "name": "npm-lib-package-boilerplate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Example of NPM library package build with Babel, Rollup, Jest, Flow, ESLint and Travis CI",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
