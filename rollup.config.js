@@ -2,21 +2,26 @@ import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-cpy';
 import flow from 'rollup-plugin-flow';
 
-const plugins = [
+// @param targets - object targets to build for e.g. { node: '6' }
+// see https://babeljs.io/docs/en/babel-preset-env#targets
+const plugins = targets => ([
   flow(),
   babel({
     exclude: 'node_modules/**',
     babelrc: false,
-    presets: [['env', { modules: false }]],
-    plugins: [['transform-object-rest-spread', { useBuiltIns: true }]],
+    presets: [
+      ['env', { modules: false, targets }],
+    ],
+    plugins: ['babel-plugin-transform-object-rest-spread'],
+    comments: false,
   }),
   copy({
     files: ['src/*.flow'],
     dest: 'lib',
   }),
-];
+]);
 
-const external = ['axios', 'qs'];
+const external = [];
 
 export default [{
   input: 'src/index.js',
@@ -27,7 +32,7 @@ export default [{
     sourcemap: true,
   },
   external,
-  plugins,
+  plugins: plugins({ node: '8' }),
 }, {
   input: 'src/index.js',
   output: {
@@ -37,5 +42,5 @@ export default [{
     sourcemap: true,
   },
   external,
-  plugins,
+  plugins: plugins({ node: '6' }),
 }];
