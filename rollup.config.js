@@ -26,7 +26,6 @@ const external = [];
 export default [{
   input: 'src/index.js',
   output: {
-    name: 'npmLibPackageExample',
     file: 'lib/index.esm.js',
     format: 'esm',
     sourcemap: true,
@@ -36,7 +35,6 @@ export default [{
 }, {
   input: 'src/index.js',
   output: {
-    name: 'npmLibPackageExample',
     file: 'lib/index.js',
     format: 'cjs',
     sourcemap: true,
